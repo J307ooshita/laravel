@@ -11,6 +11,21 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});
+*/
+use App\Task;
+use Illuminate\Http\Request;
+
+Route::get('/',function(){
+	//
+});
+
+Route::post('/task',function(Request $request){
+	//
+});
+
+Route::dalete('/task/{id}',function($id){
+	//
 });
