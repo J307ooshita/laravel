@@ -25,8 +25,11 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
-
+    protected $redirectTo = '/';
+    protected function redirectTo()
+    {
+        return '/path';
+    }
     /**
      * Create a new controller instance.
      *
@@ -35,5 +38,12 @@ class ResetPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    use Illuminate\Support\Facades\Auth;
+
+    protected function guard()
+    {
+        return Auth::guard('guard-name');
     }
 }

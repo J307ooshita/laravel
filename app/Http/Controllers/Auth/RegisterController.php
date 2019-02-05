@@ -28,8 +28,11 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
-
+    protected $redirectTo = '/';
+    protected function redirectTo()
+    {
+       return '/path';
+    }
     /**
      * Create a new controller instance.
      *
@@ -68,5 +71,18 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    use Illuminate\Support\Facades\Auth;
+
+	// 現在認証されているユーザーの取得
+	$user = Auth::user();
+
+	// 現在認証されているユーザーのID取得
+	$id = Auth::id();
+
+    protected function guard()
+    {
+         return Auth::guard('guard-name');
     }
 }
